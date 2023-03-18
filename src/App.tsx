@@ -2,7 +2,7 @@ import './App.css';
 
 const App = () => {
   return (
-    <div className="">
+    <div className="text-xl text-red-900 font-bold">
       Hello World!
     </div>
   );
