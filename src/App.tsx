@@ -7,7 +7,7 @@ const App = () => {
   const { darkTheme } = useAppSelector( state => state)
   return (
     <div className={ darkTheme ? "dark" : ""}>
-      <div className="dark:bg-gray-900 dark:text-white min-h-screen px-4 lg:px-12 pb-20">
+      <div className="dark:bg-gray-900 dark:text-white min-h-screen">
         <Header />
       </div>
     </div>
