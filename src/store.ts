@@ -1,8 +1,10 @@
 import { configureStore } from '@reduxjs/toolkit'
+import companyReducer from './features/company/companySlice';
 import themeReducer from './features/theme/themeSlice';
 export const store =  configureStore({
   reducer: {
-    darkTheme: themeReducer
+    darkTheme: themeReducer,
+    companies: companyReducer
   }
 })
 
