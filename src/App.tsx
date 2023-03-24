@@ -1,21 +1,21 @@
-import { useEffect } from 'react';
 import './App.css';
-import Header from './components/Header'
-import { useAppDispatch, useAppSelector } from './hooks/storeHook';
-import { getAllCompanies } from './features/company/companySlice';
+import { Routes, Route } from 'react-router-dom';
+import { useAppSelector } from './hooks/storeHook';
+import HomePage from './pages/HomePage';
+
 
 const App = () => {
 
   const { darkTheme } = useAppSelector( state => state);
-  const dispatch = useAppDispatch()
 
-  useEffect(() => {
-    dispatch(getAllCompanies())
-  },[dispatch])
   return (
     <div className={ darkTheme ? "dark" : ""}>
       <div className="dark:bg-gray-900 dark:text-white min-h-screen">
-        <Header />
+        <HomePage />
+
+        <Routes>
+          <Route path='/' element={ <HomePage /> } />
+        </Routes>
       </div>
     </div>
   );
