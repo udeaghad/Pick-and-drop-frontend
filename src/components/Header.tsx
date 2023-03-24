@@ -1,3 +1,4 @@
+import { NavLink } from 'react-router-dom';
 import { BsSun } from 'react-icons/bs';
 import { HiOutlineMoon} from 'react-icons/hi';
 import { toggleTheme } from '../features/theme/themeSlice';
@@ -14,7 +15,7 @@ const Header = () => {
   const dispatch = useAppDispatch();
 
   const navigation = [
-    { name: 'Home', href: '#!', current: true },
+    { name: 'Home', href: '/', current: true },
     { name: 'Book Your Order', href: '#!', current: false },
     { name: 'Track Your Order', href: '#!', current: false },
     { name: 'Report', href: '#!', current: false },
@@ -27,7 +28,7 @@ const Header = () => {
   const onToggleTheme = () => dispatch(toggleTheme());
   
   return (
-    <header className="mb-20">
+    <header className="mb-20" data-testid='nav-bar'>
       <Disclosure as="nav" className="bg-gray-800 w-auto">
       {({ open }) => (
         <>
@@ -60,9 +61,9 @@ const Header = () => {
                 <div className="hidden sm:ml-6 sm:block">
                   <div className="flex space-x-4">
                     {navigation.map((item) => (
-                      <a
+                      <NavLink
                         key={item.name}
-                        href={item.href}
+                        to={item.href}
                         className={classNames(
                           item.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
                           'rounded-md px-3 py-2 text-sm font-medium'
@@ -70,7 +71,7 @@ const Header = () => {
                         aria-current={item.current ? 'page' : undefined}
                       >
                         {item.name}
-                      </a>
+                      </NavLink>
                     ))}
                   </div>
                 </div>
@@ -108,42 +109,42 @@ const Header = () => {
                     <Menu.Items className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
                       <Menu.Item>
                         {({ active }) => (
-                          <a
-                            href="#!"
+                          <NavLink
+                            to="#!"
                             className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
                           >
                             Your Profile
-                          </a>
+                          </NavLink>
                         )}
                       </Menu.Item>
                       <Menu.Item>
                         {({ active }) => (
-                          <a
-                            href="#!"
+                          <NavLink
+                            to="#!"
                             className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
                           >
                             Settings
-                          </a>
+                          </NavLink>
                         )}
                       </Menu.Item>
                       <Menu.Item>
                         {({ active }) => (
-                          <a
-                            href="#!"
+                          <NavLink
+                            to="#!"
                             className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
                           >
                             Register Company
-                          </a>
+                          </NavLink>
                         )}
                       </Menu.Item>
                       <Menu.Item>
                         {({ active }) => (
-                          <a
-                            href="#!"
+                          <NavLink
+                            to="#!"
                             className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
                           >
                             Sign In
-                          </a>
+                          </NavLink>
                         )}
                       </Menu.Item>
                     </Menu.Items>
@@ -168,8 +169,8 @@ const Header = () => {
               {navigation.map((item) => (
                 <Disclosure.Button
                   key={item.name}
-                  as="a"
-                  href={item.href}
+                  as={NavLink}
+                  to={item.href}
                   className={classNames(
                     item.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
                     'block rounded-md px-3 py-2 text-base font-medium'
