@@ -1,7 +1,8 @@
 import { useEffect } from 'react';
 import { useAppDispatch } from '../hooks/storeHook';
 import { getAllCompanies } from '../features/company/companySlice';
-import Header from '../components/Header';
+import CompanyCard from '../components/CompanyCard';
+
 
 const HomePage = () => {
 
@@ -13,8 +14,10 @@ const HomePage = () => {
   
   return (
     
-      <div className="dark:bg-gray-900 dark:text-white min-h-screen">
-        <Header />
+      <div >
+        This is home page
+
+        <CompanyCard />
       </div>
   );
 }

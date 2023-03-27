@@ -16,7 +16,6 @@ const Header = () => {
 
   const navigation = [
     { name: 'Home', href: '/', current: true },
-    { name: 'Book Your Order', href: '#!', current: false },
     { name: 'Track Your Order', href: '#!', current: false },
     { name: 'Report', href: '#!', current: false },
   ]
@@ -88,7 +87,7 @@ const Header = () => {
                 {/* Profile dropdown */}
                 <Menu as="div" className="relative ml-3">
                   <div>
-                    <Menu.Button className="flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
+                    <Menu.Button data-testid="dropdown" className="flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
                       <span className="sr-only">Open user menu</span>
                       <img
                         className="h-8 w-8 rounded-full"
@@ -98,6 +97,7 @@ const Header = () => {
                     </Menu.Button>
                   </div>
                   <Transition
+                    data-testid = "transition"
                     as={Fragment}
                     enter="transition ease-out duration-100"
                     enterFrom="transform opacity-0 scale-95"
