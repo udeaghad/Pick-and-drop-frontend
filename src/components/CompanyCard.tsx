@@ -42,7 +42,7 @@ const CompanyCard: FC<ICompanyProps> = (props) => {
         <h3 className="py-2 text-center text-lg font-medium">Select a pick-up branch</h3>
       </div>
 
-      <ul className='p-5 ml-4 grid grid-cols-2 gap-4 list-disc'>
+      <ul className='p-7 m-5 h-32 grid grid-cols-2 gap-4 list-disc bg-gray-800 rounded-lg text-white'>
         {offices.map(office => (          
             <li key={office._id}>
               <NavLink
@@ -54,12 +54,12 @@ const CompanyCard: FC<ICompanyProps> = (props) => {
         ))}
       </ul>
 
-      <div>
+      <div className="flex justify-center align-center gap-5">
         <BsTelephonePlusFill />
         <span>{phoneNumber}</span>
       </div>
 
-      <div>
+      <div className="m-5">
         <span>Rating: {rating}</span>
       </div>
     </div>)
