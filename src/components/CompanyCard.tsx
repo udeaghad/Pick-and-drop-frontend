@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import {BsTelephonePlusFill } from 'react-icons/bs'
+import {BsTelephonePlusFill } from 'react-icons/bs';
 
 interface ICompanyProps {
   id: string;
@@ -23,12 +23,14 @@ const CompanyCard: FC<ICompanyProps> = (props) => {
 
   return (
     <div className="max-w-sm bg-white mx-auto rounded-lg border border-gray-200 shadow-md dark:bg-red-700 dark:border-white-200 hover:-translate-y-4 duration-200 hover:animate-pulse">
-      <div>
-        <h2>{name.toUpperCase()}</h2>
+      <div className="py-5">
+        <h2 className="text-center font-black text-lg"> 
+          {name.toUpperCase()}
+        </h2>
       </div>
       
       <div>
-        <img src="charlesdeluvio-pOUA8Xay514-unsplash.jpg" alt={`img-${name}`} />
+        <img src="charlesdeluvio-pOUA8Xay514-unsplash.jpg" alt={`img-${name}`} className="aspect-[6/2] object-cover"/>
       </div>
 
       <div>
