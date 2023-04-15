@@ -14,7 +14,7 @@ const HomePage = () => {
   
   return (
     
-      <div >        
+      <div>        
        {companies.data?.map(company => {
         const { _id, name, email, phoneNumber, city, state, offices, rating, isAdmin} = company
         return (
