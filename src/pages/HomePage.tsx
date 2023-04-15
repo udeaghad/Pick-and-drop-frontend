@@ -29,21 +29,19 @@ const HomePage = () => {
       <div>        
        {searchByCityOrState &&
        searchByCityOrState.map(company => {
-        const { _id, name, email, phoneNumber, city, state, offices, rating, isAdmin} = company
+        const { _id, name, phoneNumber, city, state, offices, rating,} = company
         return (
 
           <CompanyCard 
            key={_id}
            id={_id} 
            name={name} 
-           email={email} 
            phoneNumber={phoneNumber} 
            city={city}
            state={state}
            offices={offices}
            rating={rating}
-           isAdmin={isAdmin}
-           />
+          />
         )
       }) }
 
