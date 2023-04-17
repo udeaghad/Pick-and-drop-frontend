@@ -4,6 +4,8 @@ import { getAllCompanies } from '../features/company/companySlice';
 import CompanyCard from '../components/CompanyCard';
 import SearchBar from '../components/SearchBar';
 
+type ISearchTerm = string;
+
 
 const HomePage = () => {
   const { companies } = useAppSelector(state => state)
@@ -13,7 +15,7 @@ const HomePage = () => {
     dispatch(getAllCompanies())
   },[dispatch])
 
-  const [searchTerm, setSearchTerm] = useState("")
+  const [searchTerm, setSearchTerm] = useState<ISearchTerm>("")
 
   const searchByCityOrState = companies.data?.filter(company => {
     if (!searchTerm.length) return company;
