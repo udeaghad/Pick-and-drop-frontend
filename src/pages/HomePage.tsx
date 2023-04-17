@@ -22,7 +22,7 @@ const HomePage = () => {
   
   return (
     <>
-      <div className='mb-12 flex items-center justify-between'>
+      <div className='m-10 w-[80%] flex items-center justify-between'>
         <SearchBar setSearchTerm={setSearchTerm} />
       </div>
 

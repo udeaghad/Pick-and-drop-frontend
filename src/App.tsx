@@ -3,6 +3,7 @@ import { Routes, Route } from 'react-router-dom';
 import { useAppSelector } from './hooks/storeHook';
 import Header from './components/Header';
 import HomePage from './pages/HomePage';
+import RegisterCompany from './pages/RegisterCompany';
 
 
 const App = () => {
@@ -15,6 +16,7 @@ const App = () => {
        <Header />
         <Routes>
           <Route path='/' element={ <HomePage /> } />
+          <Route path='/Register-Company' element={ <RegisterCompany /> } />
         </Routes>
       </div>
     </div>
