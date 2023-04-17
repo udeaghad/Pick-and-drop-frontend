@@ -1,6 +1,37 @@
+import { ChangeEvent, FormEvent, useState } from "react";
 import { LockClosedIcon } from '@heroicons/react/20/solid';
 
+interface ICompanyRegisterInfo {
+  name: string;
+  email: string;
+  phoneNumber: string;
+  city: string;
+  state: string;
+  password: string;
+  confirmPassword: string;
+}
+
 const RegisterCompany = () => {
+  const [ companyRegisterInfo, setCompanyRegisterInfo ] = useState<ICompanyRegisterInfo>({
+    name: "",
+    email: "",
+    phoneNumber: "",
+    city: "",
+    state: "",
+    password: "",
+    confirmPassword: "",
+  })
+
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+ 
+    let value: typeof companyRegisterInfo[keyof typeof companyRegisterInfo] = e.target.value;
+    setCompanyRegisterInfo({ ...companyRegisterInfo, [e.target.name]: value });
+  }
+
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    console.log(companyRegisterInfo)
+  }
   
   return (
     <div>
@@ -9,7 +40,7 @@ const RegisterCompany = () => {
       </h2>
 
       <div className="ml-[10%] w-[80%] place-content-center">
-        <form className="mt-8 space-y-6">
+        <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
           <div className="rounded-md shadow-sm">
             <div className="mb-5">
               <label htmlFor="company-name" className="block text-sm font-medium leading-6">
@@ -21,7 +52,8 @@ const RegisterCompany = () => {
                   autoComplete="name"
                   required
                   className="relative block w-full rounded-md border-0 p-1.5 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:z-10 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                  placeholder="Enter your company name..."                        
+                  placeholder="Enter your company name..."
+                  onChange={handleChange}                        
                 />
               </label>
             </div>
@@ -36,7 +68,8 @@ const RegisterCompany = () => {
                   autoComplete="email"
                   required
                   className="relative block w-full rounded-md border-0 p-1.5 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:z-10 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                  placeholder="Enter your company email..."                        
+                  placeholder="Enter your company email..."
+                  onChange={handleChange}                      
                 />                
               </label>
             </div>
@@ -51,7 +84,8 @@ const RegisterCompany = () => {
                   autoComplete="tel"
                   required
                   className="relative block w-full rounded-md border-0 p-1.5 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:z-10 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                  placeholder="Enter your company phone number..."                        
+                  placeholder="Enter your company phone number..."
+                  onChange={handleChange}                        
                 />                
               </label>
             </div>
@@ -66,7 +100,8 @@ const RegisterCompany = () => {
                   autoComplete="text"
                   required
                   className="relative block w-full rounded-md border-0 p-1.5 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:z-10 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                  placeholder="Enter the city your company is located..."                        
+                  placeholder="Enter the city your company is located..."
+                  onChange={handleChange}                        
                 />                
               </label>
             </div>
@@ -81,7 +116,8 @@ const RegisterCompany = () => {
                   autoComplete="text"
                   required
                   className="relative block w-full rounded-md border-0 p-1.5 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:z-10 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                  placeholder="Enter the state your company is located..."                        
+                  placeholder="Enter the state your company is located..." 
+                  onChange={handleChange}                       
                 />                
               </label>
             </div>
@@ -96,7 +132,8 @@ const RegisterCompany = () => {
                   autoComplete="password"
                   required
                   className="relative block w-full rounded-md border-0 p-1.5 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:z-10 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                  placeholder="Enter your login password"                        
+                  placeholder="Enter your login password"
+                  onChange={handleChange}                        
                 />                
               </label>
             </div>
@@ -111,7 +148,8 @@ const RegisterCompany = () => {
                   autoComplete="password"
                   required
                   className="relative block w-full rounded-md border-0 p-1.5 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:z-10 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                  placeholder="Re-enter your login password"                        
+                  placeholder="Re-enter your login password" 
+                  onChange={handleChange}                       
                 />                
               </label>
             </div>
