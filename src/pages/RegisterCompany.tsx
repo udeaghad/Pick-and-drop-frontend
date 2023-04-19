@@ -1,7 +1,7 @@
 import { ChangeEvent, FormEvent, useState } from "react";
-import { LockClosedIcon } from '@heroicons/react/20/solid';
 
 import InputField from "../components/InputField";
+import SubmitButton from "../components/SubmitButton";
 
 interface ICompanyRegisterInfo {
   name: string;
@@ -33,6 +33,9 @@ const RegisterCompany = () => {
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     console.log(companyRegisterInfo)
+    
+    const resetForm = e.target as HTMLFormElement
+    resetForm.reset()
   }
   
   return (
@@ -106,10 +109,10 @@ const RegisterCompany = () => {
               placeholder="Re-enter your login password"
               handleChange={handleChange}
             />
-                        
+
           </div>
 
-            <div>
+            {/* <div>
               <button
                 type="submit"
                 className="group relative flex w-full justify-center rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
@@ -119,6 +122,10 @@ const RegisterCompany = () => {
                 </span>
                 Register
               </button>
+            </div> */}
+
+            <div>
+              <SubmitButton buttonText="Register" />
             </div>
         </form>
       </div>
