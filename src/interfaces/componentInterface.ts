@@ -12,3 +12,7 @@ export interface ICompanyProps {
   rating: number;
   
 }
+
+export interface ISuccessMsgProps {
+  successMsg: string;
+}
