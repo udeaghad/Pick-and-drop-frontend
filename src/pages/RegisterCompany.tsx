@@ -1,19 +1,18 @@
-import { ChangeEvent, FormEvent, useState } from "react";
+import { ChangeEvent, FormEvent, useState, useEffect } from "react";
 
+import { useAppDispatch, useAppSelector } from "../hooks/storeHook";
+import { ICompanyRegisterInfo } from "../interfaces/pagesInterface";
 import InputField from "../components/InputField";
 import SubmitButton from "../components/SubmitButton";
+import { postRegisterCompany, registerCompanyAction } from "../features/registerCompany/registerCompanySlice";
+import ModalPopup from "../components/ModalPopup";
+import { messageAction } from "../features/messages/message";
 
-interface ICompanyRegisterInfo {
-  name: string;
-  email: string;
-  phoneNumber: string;
-  city: string;
-  state: string;
-  password: string;
-  confirmPassword: string;
-}
 
 const RegisterCompany = () => {
+  const dispatch = useAppDispatch();
+  const { registerCompany, message } = useAppSelector((state) => state )
+  
   const [ companyRegisterInfo, setCompanyRegisterInfo ] = useState<ICompanyRegisterInfo>({
     name: "",
     email: "",
@@ -32,14 +31,28 @@ const RegisterCompany = () => {
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    console.log(companyRegisterInfo)
+    dispatch(postRegisterCompany(companyRegisterInfo))
 
     const resetForm = e.target as HTMLFormElement
     resetForm.reset()
   }
+
+  useEffect(() => {
+    if (registerCompany.data) {
+      dispatch(messageAction.getSuccessMsg(registerCompany.data));
+      dispatch(registerCompanyAction.resetState())
+    } 
+    if (registerCompany.error){
+      dispatch(messageAction.getErrorMsg("Error occured and your company could not be registered"));
+      dispatch(registerCompanyAction.resetState())
+    } 
+  }, [dispatch, registerCompany])
   
-  return (
+  return (  
     <div>
+      { message.msgLoaded && 
+        <ModalPopup  />
+      }
       <h2 className="mt-6 text-center text-3xl font-bold tracking-tight">
         Register you company
       </h2>

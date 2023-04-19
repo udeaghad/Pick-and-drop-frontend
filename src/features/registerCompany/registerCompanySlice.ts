@@ -1,15 +1,15 @@
 import { createSlice, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
+import { ICompanyRegisterInfo } from "../../interfaces/pagesInterface";
 
 export const postRegisterCompany = createAsyncThunk(
   'registerCompany/postInfo',
-  async(data, thunkApi) => {
+  async(data: ICompanyRegisterInfo, thunkApi) => {
     try {
       const response = await fetch(`https://pick-and-drop.onrender.com/api/v1/auths/register/company`, {
         method: 'POST',
         headers: {
           "Content-Type": "application/json"
         },
-        credentials: "include",
         body: JSON.stringify(data)
       })
 
@@ -35,7 +35,9 @@ const initialState: IRegisterInfo = {
 const registerCompanySlice = createSlice({
   name: "registerCompany",
   initialState,
-  reducers: {},
+  reducers: {
+    resetState: (state) => ({...state, isLoading: false, error: null, data: null})
+  },
   extraReducers(builder) {
     builder
       .addCase(postRegisterCompany.pending, (state) => ({...state, isLoading: true}))

@@ -5,7 +5,7 @@ import { BrowserRouter } from 'react-router-dom';
 
 import { store } from '../../store';
 import SearchBar from '../../components/SearchBar';
-import { useState } from 'react';
+
 
 describe('SearchBar Component', () => {
   const setSearchTerm = () => {

@@ -2,21 +2,8 @@ import { FC } from 'react';
 import {BsTelephonePlusFill } from 'react-icons/bs';
 import { MdLocationOn } from 'react-icons/md'
 import { NavLink } from 'react-router-dom';
+import { ICompanyProps } from '../interfaces/componentInterface';
 
-interface ICompanyProps {
-  id: string;
-  name: string;
-  phoneNumber: string;
-  city: string;
-  state: string
-  offices: {
-    _id: string;
-    name: string;
-    location: string;
-  }[];
-  rating: number;
-  
-}
 
 const CompanyCard: FC<ICompanyProps> = (props) => {
   const {name, city, state, offices, rating, phoneNumber } = props;
