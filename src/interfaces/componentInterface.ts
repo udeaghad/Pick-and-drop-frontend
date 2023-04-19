@@ -16,3 +16,7 @@ export interface ICompanyProps {
 export interface ISuccessMsgProps {
   successMsg: string;
 }
+
+export interface IErrorMsgProps {
+  errorMsg: string;
+}
